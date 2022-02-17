@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Modal from "./components/Modal";
+import Navbar from "./components/Navbar";
+import Product from "./components/Product";
 
-function App() {
+const App = () => {
+  const [cart, setCart] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="relative">
+        <Navbar cart={cart} />
+
+        <Product cart={cart} setCart={setCart} setShowModal={setShowModal} />
+
+        <Modal showModal={showModal} setShowModal={setShowModal} />
+      </div>
+    </>
   );
-}
+};
 
 export default App;
